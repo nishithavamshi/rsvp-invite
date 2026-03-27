@@ -45,22 +45,53 @@
     text-align: center;
     cursor: pointer;
     user-select: none;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .heart-box:focus {
+    outline: 3px solid #0078D7;
+    outline-offset: 3px;
   }
 
   .heart {
-    font-size: 48px;
-    transition: transform 0.3s ease;
+    font-size: 36px;
+    user-select: none;
+    color: transparent; /* initially transparent to show empty */
+    transition: color 0.3s ease;
   }
 
-  .selected {
-    transform: scale(1.2);
-  }
-
-  .red {
+  .selected.red .heart {
     color: red;
   }
 
-  .black {
+  .selected.black .heart {
+    color: black;
+  }
+
+  /* Fill background when selected */
+  .selected.red {
+    background-color: #ffe6e6;
+    border-color: red;
+  }
+
+  .selected.black {
+    background-color: #e6e6e6;
+    border-color: black;
+  }
+
+  .heart-label {
+    margin-top: 6px;
+    font-weight: 600;
+    font-size: 14px;
     color: black;
   }
 
@@ -87,8 +118,16 @@
   }
 
   @media (max-width: 480px) {
+    .heart-box {
+      width: 60px;
+      height: 60px;
+      padding: 6px;
+    }
     .heart {
-      font-size: 36px;
+      font-size: 28px;
+    }
+    .heart-label {
+      font-size: 12px;
     }
   }
 </style>
@@ -123,8 +162,8 @@
         onkeydown="handleKey(event, 'Yes')"
         id="heartYesBox"
       >
-        <div id="yesHeart" class="heart">❤️</div>
-        <div>ATTENDING</div>
+        <div class="heart">❤️</div>
+        <div class="heart-label">ATTENDING</div>
       </div>
 
       <div 
@@ -137,8 +176,8 @@
         onkeydown="handleKey(event, 'No')"
         id="heartNoBox"
       >
-        <div id="noHeart" class="heart">🖤</div>
-        <div>NOT ATTENDING</div>
+        <div class="heart">❤️</div>
+        <div class="heart-label">NOT ATTENDING</div>
       </div>
     </div>
 
@@ -176,20 +215,18 @@
     const attendingInput = document.getElementById('attending');
     attendingInput.value = value;
 
-    const yesHeart = document.getElementById('yesHeart');
-    const noHeart = document.getElementById('noHeart');
     const yesBox = document.getElementById('heartYesBox');
     const noBox = document.getElementById('heartNoBox');
 
     if(value === 'Yes') {
-      yesHeart.classList.add('selected', 'red');
-      noHeart.classList.remove('selected', 'black');
+      yesBox.classList.add('selected', 'red');
       yesBox.setAttribute('aria-checked', 'true');
+      noBox.classList.remove('selected', 'black');
       noBox.setAttribute('aria-checked', 'false');
     } else {
-      noHeart.classList.add('selected', 'black');
-      yesHeart.classList.remove('selected', 'red');
+      noBox.classList.add('selected', 'black');
       noBox.setAttribute('aria-checked', 'true');
+      yesBox.classList.remove('selected', 'red');
       yesBox.setAttribute('aria-checked', 'false');
     }
   }
@@ -203,7 +240,6 @@
     return true;
   }
 
-  // Keyboard accessibility for hearts
   function handleKey(event, value) {
     if(event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
