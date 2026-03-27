@@ -41,60 +41,51 @@
     margin-bottom: 24px;
   }
 
+  /* HEART BOX (no circle now) */
   .heart-box {
     text-align: center;
     cursor: pointer;
     user-select: none;
-    border: 2px solid black;
-    border-radius: 50%;
+    border: none;
     padding: 10px;
-    width: 80px;
-    height: 80px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
   .heart-box:focus {
-    outline: 3px solid #0078D7;
-    outline-offset: 3px;
+    outline: 2px solid #0078D7;
+    border-radius: 8px;
   }
 
+  /* HEART STYLE */
   .heart {
-  transition: fill 0.3s ease;
-  fill: none; /* initially no fill */
-  stroke: black;
-  stroke-width: 2;
-}
-
-.selected.red .heart {
-  fill: red;
-  stroke: red;
-}
-
-.selected.black .heart {
-  fill: black;
-  stroke: black;
-}
-
-  /* Fill background when selected */
-  .selected.red {
-    background-color: #ffe6e6;
-    border-color: red;
+    width: 50px;
+    height: 50px;
+    fill: none;
+    stroke: black;
+    stroke-width: 2;
+    transition: all 0.3s ease;
   }
 
-  .selected.black {
-    background-color: #e6e6e6;
-    border-color: black;
+  /* RED (Attending) */
+  .selected.red .heart {
+    fill: red;
+    stroke: red;
+    transform: scale(1.15);
+  }
+
+  /* BLACK (Not Attending) */
+  .selected.black .heart {
+    fill: black;
+    stroke: black;
+    transform: scale(1.15);
   }
 
   .heart-label {
     margin-top: 6px;
     font-weight: 600;
     font-size: 14px;
-    color: black;
   }
 
   input, select, button {
@@ -120,13 +111,9 @@
   }
 
   @media (max-width: 480px) {
-    .heart-box {
-      width: 60px;
-      height: 60px;
-      padding: 6px;
-    }
     .heart {
-      font-size: 28px;
+      width: 40px;
+      height: 40px;
     }
     .heart-label {
       font-size: 12px;
@@ -153,56 +140,55 @@
 
     <input type="hidden" name="attending" id="attending" required />
 
-    <div class="hearts" role="radiogroup" aria-label="Will you attend?">
+    <div class="hearts" role="radiogroup">
+
+      <!-- ATTENDING -->
       <div 
         class="heart-box" 
-        tabindex="0" 
-        role="radio" 
-        aria-checked="false" 
-        aria-label="Attending"
+        tabindex="0"
         onclick="selectOption('Yes')" 
         onkeydown="handleKey(event, 'Yes')"
         id="heartYesBox"
       >
-        <div class="heart">❤️</div>
+        <svg class="heart" viewBox="0 0 24 24">
+          <path d="M12 21s-6.7-4.35-10-9C-1.5 6.5 2.5 2 7 4.5 9 5.5 12 8 12 8s3-2.5 5-3.5C21.5 2 25.5 6.5 22 12c-3.3 4.65-10 9-10 9z"/>
+        </svg>
         <div class="heart-label">ATTENDING</div>
       </div>
 
+      <!-- NOT ATTENDING -->
       <div 
         class="heart-box" 
-        tabindex="0" 
-        role="radio" 
-        aria-checked="false" 
-        aria-label="Not attending"
+        tabindex="0"
         onclick="selectOption('No')" 
         onkeydown="handleKey(event, 'No')"
         id="heartNoBox"
       >
-        <div class="heart">❤️</div>
+        <svg class="heart" viewBox="0 0 24 24">
+          <path d="M12 21s-6.7-4.35-10-9C-1.5 6.5 2.5 2 7 4.5 9 5.5 12 8 12 8s3-2.5 5-3.5C21.5 2 25.5 6.5 22 12c-3.3 4.65-10 9-10 9z"/>
+        </svg>
         <div class="heart-label">NOT ATTENDING</div>
       </div>
+
     </div>
 
     <input 
       type="text" 
       name="name" 
       placeholder="Your Name" 
-      required 
-      aria-label="Your Name"
-      autocomplete="name"
+      required
     />
 
     <input 
       type="number" 
       name="guests" 
       placeholder="No. of guests attending" 
-      min="1" 
+      min="0" 
       max="20" 
       required
-      aria-label="Number of guests attending"
     />
 
-    <select name="meal" required aria-label="Meal preference">
+    <select name="meal" required>
       <option value="" disabled selected>Meal Preference</option>
       <option>Veg</option>
       <option>Non-Veg</option>
@@ -222,14 +208,10 @@
 
     if(value === 'Yes') {
       yesBox.classList.add('selected', 'red');
-      yesBox.setAttribute('aria-checked', 'true');
       noBox.classList.remove('selected', 'black');
-      noBox.setAttribute('aria-checked', 'false');
     } else {
       noBox.classList.add('selected', 'black');
-      noBox.setAttribute('aria-checked', 'true');
       yesBox.classList.remove('selected', 'red');
-      yesBox.setAttribute('aria-checked', 'false');
     }
   }
 
