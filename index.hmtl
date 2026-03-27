@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Invitation</title>
+
+<style>
+  body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background-color: #000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .btn {
+    background-color: #d44e4e;
+    color: white;
+    padding: 14px 32px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn:hover {
+    background-color: #b33d3d;
+    transform: scale(1.05);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img src="invite-photo.jpg" alt="Invitation Photo" />
+  <a href="rsvp.html" class="btn" aria-label="Open Invitation">Open Invitation 💌</a>
+</div>
+
+</body>
+</html>
