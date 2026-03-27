@@ -63,19 +63,21 @@
   }
 
   .heart {
-    font-size: 36px;
-    user-select: none;
-    color: transparent; /* initially transparent to show empty */
-    transition: color 0.3s ease;
-  }
+  transition: fill 0.3s ease;
+  fill: none; /* initially no fill */
+  stroke: black;
+  stroke-width: 2;
+}
 
-  .selected.red .heart {
-    color: red;
-  }
+.selected.red .heart {
+  fill: red;
+  stroke: red;
+}
 
-  .selected.black .heart {
-    color: black;
-  }
+.selected.black .heart {
+  fill: black;
+  stroke: black;
+}
 
   /* Fill background when selected */
   .selected.red {
