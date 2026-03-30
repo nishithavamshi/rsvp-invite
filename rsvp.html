@@ -25,16 +25,14 @@
   }
 
   /* TORANAM DECORATION - single full-width hanging garland */
-.toranam {
+.toranam-img {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 120px; /* adjust height to match your image */
-    background: url('Toranam.jpg') no-repeat center top;
-    background-size: cover; /* makes it stretch across the width */
+    width: 100%;       /* spans full width */
+    height: auto;      /* maintains aspect ratio */
+    z-index: 1000;     /* stays on top */
     pointer-events: none;
-    z-index: 1000;
 }
 
   /* MAIN CARD */
@@ -150,7 +148,8 @@
 <body>
 
 <!-- TORANAM -->
-<div class="toranam"></div>
+<div class="toranam"> <!-- TORANAM -->
+<img src="Toranam.jpg" class="toranam-img" alt="Toranam Decoration"></div>
 
 <div class="container">
 
