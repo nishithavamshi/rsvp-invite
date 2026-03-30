@@ -6,35 +6,35 @@
 <title>Marriage Invitation</title>
 
 <style>
+  /* This section handles the full-screen background */
   body, html {
     margin: 0; 
     padding: 0;
     width: 100%; 
     height: 100%;
-    /* Updated Background logic */
-    background-image: url('background-image.jpg'); /* Replace with your image path */
-    background-size: cover;      /* Scales image to fill the screen */
-    background-position: center; /* Centers the image */
+    
+    /* Apply the floral background */
+    background-image: url('background.jpg'); 
+    background-size: cover;        /* Fills the entire screen */
+    background-position: center;   /* Keeps the flowers centered */
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Keeps background still while scrolling */
+    background-attachment: fixed;  /* Background stays still while scrolling */
     
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Prevents unwanted scrollbars */
   }
 
-  /* Optional: Glassmorphism effect to make the content pop against a busy background */
+  /* The container for your invitation card */
   .container {
     max-width: 420px;
-    width: 85%;
+    width: 90%;
     text-align: center;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-    backdrop-filter: blur(8px);           /* Blurs the background behind the box */
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    /* This adds a nice shadow to lift the card off the background */
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.4));
   }
 
   .btn {
@@ -47,6 +47,7 @@
     text-decoration: none;
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     display: inline-block;
+    margin-top: 10px;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
@@ -55,20 +56,27 @@
     transform: scale(1.05);
   }
 
-  img {
+  img.card-photo {
     max-width: 100%;
     height: auto;
     margin-bottom: 24px;
     border-radius: 12px;
     user-select: none;
+    /* Matches the warm tone of the illustration */
+    border: 4px solid white; 
   }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <img src="invite-photo.jpg" alt="Invitation Photo" />
-  <a href="rsvp.html" class="btn" aria-label="Open Invitation">Open Invitation 💌</a>
+  <img src="invite-photo.jpg" alt="Invitation Photo" class="card-photo" />
+  
+  <br>
+  
+  <a href="https://nishithavamshi.github.io/rsvp-invite/rsvp.html" class="btn" aria-label="Open Invitation">
+    Open Invitation 💌
+  </a>
 </div>
 
 </body>
