@@ -2,49 +2,39 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Marriage Invitation</title>
 
 <style>
-  body, html {
-    margin: 0; 
+  html, body {
+    margin: 0;
     padding: 0;
-    width: 100%; 
     height: 100%;
-    /* Fallback color so it's never black */
-    background-color: #fdf5e6; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  /* FIXED BACKGROUND (no black issue) */
+  body {
+    background: #fdf5e6 url('background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-  }
-
-  /* Full screen background logic */
-  body {
-    background-image: url('background-image.jpg'); /* MAKE SURE THIS MATCHES YOUR FILE NAME */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
   }
 
   .container {
     max-width: 420px;
-    width: 85%;
+    width: 90%;
     text-align: center;
     padding: 10px;
-    /* This makes the card look like it's floating over the flowers */
     filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
   }
 
   .card-photo {
     width: 100%;
-    height: auto;
     border-radius: 15px;
-    /* Adding a white border makes it look like a real printed card */
     border: 5px solid white;
-    box-sizing: border-box;
     margin-bottom: 20px;
   }
 
@@ -56,26 +46,27 @@
     font-weight: bold;
     border-radius: 50px;
     text-decoration: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     display: inline-block;
-    transition: all 0.3s ease;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   }
 
   .btn:hover {
     background-color: #b33d3d;
     transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
   }
+
 </style>
 </head>
+
 <body>
 
 <div class="container">
-  <img src="invite-photo.jpg" alt="Invitation Photo" class="card-photo" />
-  <br>
-  <a href="https://nishithavamshi.github.io/rsvp-invite/rsvp.html" class="btn">
-    Open Invitation 💌
-  </a>
+  <!-- Invitation Card -->
+  <img src="invite-photo.jpg" alt="Invitation Card" class="card-photo">
+
+  <!-- Button -->
+  <a href="rsvp.html" class="btn">Open Invitation 💌</a>
 </div>
 
 </body>
