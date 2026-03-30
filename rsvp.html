@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!-- Premium Wedding Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <title>RSVP</title>
@@ -14,43 +13,44 @@
     margin: 0;
     font-family: 'Poppins', sans-serif;
 
-    /* Royal Telugu Wedding Background */
-    background:
-      radial-gradient(circle at top, rgba(255,215,0,0.25), transparent 60%),
-      linear-gradient(135deg, #6b0000, #b8860b);
-
+    /* SPECIFIC TRADITIONAL WEDDING BACKGROUND WITH TORANAM */
+    /* Use image_3.png here and ensure it's named Wedding_Background.png */
+    background-image: url('Toranam.jpg');
+    background-size: cover;
+    background-position: top center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
     display: flex;
     justify-content: center;
     padding: 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
   }
 
-  /* TORANAM DECORATION - single full-width hanging garland */
-.toranam-img {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;       /* spans full width */
-    height: auto;      /* maintains aspect ratio */
-    z-index: 1000;     /* stays on top */
-    pointer-events: none;
-}
+  /* The explicit toranam-img class is no longer needed since the toranam
+     is built into the background image, providing a cleaner look. */
 
-  /* MAIN CARD */
+  /* MAIN RSVP CARD */
   .container {
     width: 100%;
     max-width: 420px;
-    margin-top: 80px;
+    
+    /* Position the card to start below the toranam *
+    margin-top: 180px; /* Adjust this value as needed to clear the toranam leaves */
+    margin-bottom: 80px;
 
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.97); /* Slightly less translucent for better text contrast against rich background */
     backdrop-filter: blur(8px);
 
     padding: 26px;
     border-radius: 16px;
 
-    box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4);
     border: 2px solid rgba(212,175,55,0.5);
 
     animation: fadeIn 1s ease;
+    box-sizing: border-box;
   }
 
   @keyframes fadeIn {
@@ -61,6 +61,7 @@
   h1 {
     font-family: 'Cinzel', serif;
     text-align: center;
+    margin-top: 0;
     margin-bottom: 5px;
     color: #8b0000;
     letter-spacing: 2px;
@@ -82,6 +83,8 @@
     text-align: center;
     cursor: pointer;
     padding: 10px;
+    box-sizing: border-box;
+    width: 45%;
   }
 
   .heart {
@@ -90,7 +93,7 @@
     fill: none;
     stroke: #444;
     stroke-width: 2;
-    transition: 0.3s;
+    transition: transform 0.3s, fill 0.3s, stroke 0.3s;
   }
 
   .selected.red .heart {
@@ -118,6 +121,7 @@
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 15px;
+    box-sizing: border-box; /* Crucial for padding to not exceed width */
   }
 
   /* BUTTON */
@@ -134,22 +138,18 @@
     font-size: 16px;
 
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
 
   button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   }
 
 </style>
 </head>
 
 <body>
-
-<!-- TORANAM -->
-<div class="toranam"> <!-- TORANAM -->
-<img src="Toranam.jpg" class="toranam-img" alt="Toranam Decoration"></div>
 
 <div class="container">
 
